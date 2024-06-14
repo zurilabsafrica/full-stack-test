@@ -1,30 +1,34 @@
 import React from "react";
+import Card from "@mui/material/Card";
 
 import useBooks from "./hooks/useBooks";
+import Navbar from "./components/Navbar";
+import BookCard from "./components/BookCard";
 
 const Landing = () => {
   const { loading, error, data } = useBooks();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-
   return (
-    <div className="p-6 bg-gray-100">
-      <p className="text-lg font-bold font-mulish mb-4">Hello</p>
-      {data.books.map((book, i) => (
-        <div key={i} className="p-4 mb-4 bg-white shadow rounded">
-          <h3 className="text-xl font-bold mb-2">{book.title}</h3>
-          <p className="text-gray-700 mb-2">{book.author}</p>
-          <img
-            className="w-full h-64 object-cover mb-2"
-            src={book.coverPhotoURL}
-            alt={book.title}
-          />
-          <p className="text-sm text-gray-500">
-            Reading Level: {book.readingLevel}
-          </p>
+    <div>
+      <Navbar />
+      <div className="flex justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto">
+          {data.books.map((book, i) => (
+            <Card
+              key={i}
+              className="shadow-md rounded-3xl w-64 h-64 cursor-pointer transform transition-transform duration-10 ease-in-out hover:scale-105"
+            >
+              <img
+                className="object-cover w-64 h-64 "
+                src={`/${book.coverPhotoURL}`}
+                alt={book.title}
+              />
+            </Card>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
