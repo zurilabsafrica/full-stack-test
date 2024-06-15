@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import Card from "@mui/material/Card";
+import { Box, Skeleton, Card } from "@mui/material";
 
 import useBooks from "./hooks/useBooks";
 import Navbar from "./components/Navbar";
-import BookCard from "./components/BookCard";
-import Modal from "./components/Modal";
-import { Box, Skeleton } from "@mui/material";
+import Popup from "./components/Popup";
 
 const Landing = () => {
   const { loading, error, data } = useBooks();
@@ -53,7 +51,7 @@ const Landing = () => {
           ))}
         </div>
       </div>
-      <Modal open={openModal} handleClose={handleClose} book={selectedBook} />
+      <Popup isOpen={openModal} onClose={handleClose} book={selectedBook} />
     </div>
   );
 };
