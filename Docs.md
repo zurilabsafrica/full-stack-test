@@ -1,24 +1,6 @@
 # Book Viewer Web App
 
-This documentation provides a comprehensive overview of the Book Viewer web application, designed to help teachers assign books to students.
-
-## Overview
-
-The Book Viewer web application allows teachers to browse, search, and manage a list of books. Teachers can search for books by title, add books to their reading list, and remove books from the list as needed.
-
-### Features
-
-1. **Search Bar**: Allows users to search for books by title.
-2. **Search Results**: Displays book titles, authors, and a button to add the book to the reading list.
-3. **Reading List**: Shows all the books that have been added by the teacher.
-4. **Remove Book**: Allows teachers to remove books from the reading list.
-
-## Technical Requirements
-
-- **Frontend Framework**: React
-- **Component Library**: Material-UI
-- **GraphQL Server**: Used to fetch book data
-- **Styling**: TailwindCSS and "Mulish" Google Font
+This documentation provides a comprehensive overview of the Book Viewer web application.
 
 ## File Structure
 
@@ -116,11 +98,5 @@ book-viewer-web-app/
 ## Styling Guidelines
 
 - **Font**: Uses the "Mulish" Google Font for consistency and readability.
-- **Colors**: Incorporates a predefined color palette for UI elements.
-- **Responsive Design**: Ensures the UI is beautiful and functional across different screen sizes.
-
-## Evaluation Criteria
-
-- **Code Quality and Organization**: Clean, modular, and well-documented code.
-- **User Experience and Design**: Intuitive and user-friendly interface.
-- **Responsive UI**: Ensures usability on various devices and screen sizes.
+- **Colors**: Incorporates the predefined color palette for UI elements, defined in the tailwind config file.
+- **Responsive Design**: Ensures the UI is consistent and functional across different screen sizes.
