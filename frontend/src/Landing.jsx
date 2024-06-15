@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import Card from "@mui/material/Card";
+import { Box, Skeleton, Card } from "@mui/material";
 
 import useBooks from "./hooks/useBooks";
 import Navbar from "./components/Navbar";
-import BookCard from "./components/BookCard";
-import Modal from "./components/Modal";
-import { Box, Skeleton } from "@mui/material";
+import Popup from "./components/Popup";
 
 const Landing = () => {
   const { loading, error, data } = useBooks();
@@ -23,11 +21,17 @@ const Landing = () => {
 
   if (loading)
     return (
-      <Box sx={{ pt: 0.5 }}>
-        {/* <Skeleton /> */}
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-          <Skeleton key={item} width="60%" variant="circular" />
-        ))}
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 9999,
+        }}
+      >
+        <Skeleton variant="rectangular" width="100%" height="100%" />
       </Box>
     );
   if (error) return <p>Error: {error.message}</p>;
@@ -53,7 +57,7 @@ const Landing = () => {
           ))}
         </div>
       </div>
-      <Modal open={openModal} handleClose={handleClose} book={selectedBook} />
+      <Popup isOpen={openModal} onClose={handleClose} book={selectedBook} />
     </div>
   );
 };
