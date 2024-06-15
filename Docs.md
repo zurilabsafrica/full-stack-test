@@ -22,6 +22,7 @@ The Book Viewer web application allows teachers to browse, search, and manage a 
 
 ## File Structure
 
+```
 book-viewer-web-app/
 ├── frontend/
 │ ├── src/
@@ -49,6 +50,7 @@ book-viewer-web-app/
 ├── README.md
 ├── Docs.md
 └── .prettierrc
+```
 
 ## Logic and Design
 
