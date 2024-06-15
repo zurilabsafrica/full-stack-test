@@ -25,10 +25,10 @@ const Popup = ({ book, isOpen, onClose }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
           <div
             ref={ref}
-            className="bg-white p-4 rounded-lg shadow-lg w-3/4 md:w-1/2 lg:w-1/3"
+            className="bg-white p-4 rounded-lg shadow-lg w-3/4 md:w-1/2 lg:w-1/3 ring-4 ring-turquoise ring-opacity-75"
           >
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-center text-turquoise">
+              <h2 className="text-xl font-semibold text-center text-steelBlue">
                 {book.title}
               </h2>
               <Close onClick={onClose} className="text-orangeRed" />
