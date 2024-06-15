@@ -28,15 +28,22 @@ const Popup = ({ book, isOpen, onClose }) => {
             className="bg-white p-4 rounded-lg shadow-lg w-3/4 md:w-1/2 lg:w-1/3"
           >
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold">{book.title}</h2>
+              <h2 className="text-xl font-semibold text-center text-turquoise">
+                {book.title}
+              </h2>
               <Close onClick={onClose} className="text-orangeRed" />
             </div>
             <img
-              className="h-48 w-auto mx-auto my-4"
+              className="h-56 w-auto mx-auto my-4"
               src={`/${book.coverPhotoURL}`}
               alt={book.title}
             />
-            <p className="text-sm">{book.description}</p>
+            <div className="text-sm mb-2 text-center">
+              <strong>Author:</strong> {book.author}
+            </div>
+            <div className="text-sm mb-2 text-center">
+              <strong>Reading Level:</strong> {book.readingLevel}
+            </div>
           </div>
         </div>,
         document.body
