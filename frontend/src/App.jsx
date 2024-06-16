@@ -1,13 +1,17 @@
-import { ApolloProvider } from "@apollo/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Landing from "./Landing";
-import client from "./api/client";
+import Landing from "./pages/Landing";
+import Listing from "./pages/Listing";
 
-const App = () => (
-  <ApolloProvider client={client}>
-    {/* This is the landing page for the app */}
-    <Landing />
-  </ApolloProvider>
-);
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/listing" element={<Listing />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
