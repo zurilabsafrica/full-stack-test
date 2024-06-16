@@ -9,9 +9,9 @@ const teacherSlice = createSlice({
   },
   reducers: {
     addAllBooks: (state, action) => {
-      // New reducer for adding all books
-      const { books } = action.payload;
+      const books = action.payload;
       state.allBooks = books;
+      console.log("Added books to the store");
     },
     searchBooks: (state, action) => {
       const { searchTerm } = action.payload;
@@ -20,21 +20,36 @@ const teacherSlice = createSlice({
       );
     },
     addToReadingList: (state, action) => {
-      const { book } = action.payload;
-      // Add the book to the readingList state
-      state.readingList.push(book);
+      console.log("action.payload in addToReadingList:", action.payload);
+      state.readingList.push(action.payload);
+      console.log("Pushed book to reading list:", state.readingList);
     },
     removeFromReadingList: (state, action) => {
-      const { bookId } = action.payload;
-      // Remove the book from the readingList state
+      const { title, author } = action.payload;
       state.readingList = state.readingList.filter(
-        (book) => book.id !== bookId
+        (book) => book.title !== title && book.author !== author
       );
+      console.log("book removed");
     },
   },
 });
 
-export const { searchBooks, addToReadingList, removeFromReadingList } =
-  teacherSlice.actions;
+export const {
+  addAllBooks,
+  searchBooks,
+  addToReadingList,
+  removeFromReadingList,
+} = teacherSlice.actions;
 
 export default teacherSlice.reducer;
+
+// Selectors
+export const selectSearchResults = (state) => state.teacher.searchResults;
+export const selectReadingList = (state) => state.teacher.readingList;
+export const selectAllBooks = (state) => state.teacher.allBooks;
+export const selectNumberOfListedBooks = (state) =>
+  state.teacher.readingList.length;
+export const isBookInReadingList = (state, bookTitle, bookAuthor) =>
+  state.teacher.readingList.some(
+    (book) => book.title === bookTitle && book.author === bookAuthor
+  );
