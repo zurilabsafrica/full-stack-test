@@ -8,28 +8,6 @@ import useBooks from "./hooks/useBooks";
 import { addAllBooks } from "./features/teacherSlice";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [books, setBooks] = useState(null);
-
-  const handleFetch = () => {
-    const { load, error, data } = useBooks();
-    setLoading(load);
-    setError(error);
-    setBooks(data.books);
-    console.log("Fetched books from api:", books);
-  };
-
-  const handleDispatch = () => {
-    dispatch(addAllBooks(books));
-  };
-
-  // useEffect(() => {
-  //   handleFetch();
-  //   handleDispatch();
-  // }, []);
-
   return (
     <Router>
       <Routes>
