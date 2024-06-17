@@ -9,7 +9,6 @@ const Search = ({ books }) => {
 
   const handleSearch = () => {
     if (value) {
-      console.log("Opening popup for book:", value);
       setPopupOpen(true);
     }
   };
@@ -26,7 +25,7 @@ const Search = ({ books }) => {
         className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-auto"
         onClick={handleSearch}
       >
-        <SearchIcon className="h-5 w-5 text-steelBlue cursor-pointer" />
+        <SearchIcon className="h-8 w-8 text-steelBlue cursor-pointer" />
       </div>
       <Autocomplete
         freeSolo
@@ -35,7 +34,6 @@ const Search = ({ books }) => {
         options={books}
         getOptionLabel={(option) => option.title}
         onChange={(event, newValue) => {
-          console.log("Selected book:", newValue);
           setValue(newValue);
         }}
         renderOption={(props, option) => (

@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Box, Skeleton, Card } from "@mui/material";
+import { useSelector } from "react-redux";
 
-import useBooks from "./hooks/useBooks";
-import Navbar from "./components/Navbar";
-import Popup from "./components/Popup";
+import useBooks from "../hooks/useBooks";
+import Navbar from "../components/Navbar";
+import Popup from "../components/Popup";
+import { selectNumberOfListedBooks } from "../features/teacherSlice";
 
 const Landing = () => {
   const { loading, error, data } = useBooks();
   const [openModal, setOpenModal] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
+  const numberOfListedBooks = useSelector(selectNumberOfListedBooks);
 
   const handleOpen = (book) => {
     setSelectedBook(book);
@@ -37,10 +40,10 @@ const Landing = () => {
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div className="flex flex-row justify-center">
-      <div className="mb-12">
-        <Navbar books={data.books} />
+      <div className="">
+        <Navbar books={data.books} listedBooks={numberOfListedBooks} />
       </div>
-      <div className="flex justify-center overflow-auto">
+      <div className="mt-[6rem] flex justify-center overflow-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto">
           {data.books.map((book, i) => (
             <Card
